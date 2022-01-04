@@ -3,11 +3,15 @@ import { ProductService } from './product.service';
 import { ProductController } from './product.controller';
 import { BrandModule } from '../brand/brand.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BrandRepository } from '../brand/repositories/brand.repository';
 import { ProductRepository } from './repositories/product.repository';
+import { TableModelModule } from '../table-model/table-model.module';
 
 @Module({
-  imports: [BrandModule, TypeOrmModule.forFeature([ProductRepository])],
+  imports: [
+    BrandModule,
+    TableModelModule,
+    TypeOrmModule.forFeature([ProductRepository]),
+  ],
   controllers: [ProductController],
   providers: [ProductService],
 })

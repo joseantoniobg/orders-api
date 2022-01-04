@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { VendorsModule } from './vendors/vendors.module';
 import { ProductModule } from './product/product.module';
 import { BrandModule } from './brand/brand.module';
+import { TableModelModule } from './table-model/table-model.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -18,6 +19,7 @@ import { BrandModule } from './brand/brand.module';
     VendorsModule,
     ProductModule,
     BrandModule,
+    TableModelModule,
   ],
 })
 export class AppModule {}
