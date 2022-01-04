@@ -5,6 +5,8 @@ import { DataBaseConnectionService } from './shared/typeorm.config';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { VendorsModule } from './vendors/vendors.module';
+import { ProductModule } from './product/product.module';
+import { BrandModule } from './brand/brand.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -14,6 +16,8 @@ import { VendorsModule } from './vendors/vendors.module';
     AuthModule,
     UsersModule,
     VendorsModule,
+    ProductModule,
+    BrandModule,
   ],
 })
 export class AppModule {}

@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Users } from '../../users/entities/users.entity';
 export class TokenDto {
   @ApiProperty({
     description: 'The token to acess the services',
@@ -16,8 +17,8 @@ export class TokenDto {
   })
   token_type: string;
   @ApiProperty({
-    description: 'The scope of the apis in JD',
-    example: 'sist_gct',
+    description: 'The logged user',
+    type: Users,
   })
-  scope: string;
+  user: Users;
 }

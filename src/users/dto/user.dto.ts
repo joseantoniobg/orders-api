@@ -1,8 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { UsersRoles } from '../entities/roles.entity';
+import { Vendors } from '../../vendors/entities/vendors.entity';
 import {
   IsEmail,
   IsNumber,
+  IsObject,
   IsOptional,
   IsString,
   IsUUID,
@@ -37,6 +39,14 @@ export class UserDto {
   email: string;
 
   @ApiProperty({
+    description: 'The name for the user',
+    example: 'jose antonio',
+  })
+  @IsString()
+  @MaxLength(100)
+  name: string;
+
+  @ApiProperty({
     description: 'The password for the user',
     example: 'hylr5t43fo987',
   })
@@ -44,7 +54,15 @@ export class UserDto {
   password: string;
 
   @ApiProperty({
+    description: 'The vendor',
+    type: Vendors,
+  })
+  @IsObject()
+  vendor: Vendors;
+
+  @ApiProperty({
     description: 'The array of initial roles',
+    type: [UsersRoles],
   })
   @IsOptional()
   roles: UsersRoles[];

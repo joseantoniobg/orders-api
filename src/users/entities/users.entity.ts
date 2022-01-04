@@ -35,6 +35,13 @@ export class Users extends BaseEntity {
   login: string;
 
   @ApiProperty({
+    description: 'name for the user',
+    example: 'jose antonio',
+  })
+  @Column({ type: 'varchar', length: 100 })
+  name: string;
+
+  @ApiProperty({
     description: 'email for the user',
     example: 'joseantoniobg@jabg.com.br',
   })

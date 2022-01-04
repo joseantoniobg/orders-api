@@ -1,6 +1,7 @@
 import { registerDecorator, ValidationOptions } from 'class-validator';
 import { cnpj } from 'cpf-cnpj-validator';
 import { getNumbersFromString } from '../helpers/helpers.functions';
+import { languages, lang } from '../languages/content.lang';
 
 export function IsCnpj() {
   return (object: any, propertyName: string) => {
@@ -9,7 +10,7 @@ export function IsCnpj() {
       target: object.constructor,
       propertyName,
       constraints: [],
-      options: { message: 'Invalid CNPJ Number' },
+      options: { message: languages[lang].InvalidCNPJ },
       validator: {
         validate(value: string) {
           if (value) {

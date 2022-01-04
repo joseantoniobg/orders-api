@@ -8,6 +8,9 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
 } from 'typeorm';
 
 @Entity('users_roles')
@@ -27,12 +30,26 @@ export class UsersRoles extends BaseEntity {
   @Column({ type: 'varchar', length: 50 })
   unique_key: string;
 
+  @Column({ type: 'bool', nullable: true })
+  show_menu: boolean;
+
+  @Index('ix_link', { unique: true })
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  link: string;
+
   @ApiProperty({
     description: 'the role description',
     example: 'user can edit orders',
   })
   @Column({ type: 'varchar', length: 200 })
   description: string;
+
+  @Column({ nullable: true })
+  id_role_child: number;
+
+  @JoinColumn({ name: 'id_role_child' })
+  @ManyToOne(() => UsersRoles, { nullable: true })
+  child_role: UsersRoles;
 
   @ApiProperty({
     description: 'readable description for the role',
